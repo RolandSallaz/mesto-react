@@ -1,12 +1,8 @@
-const Main = ({
-  handleEditAvatarClick,
-  handleEditProfileClick,
-  handleAddPlaceClick,
-}) => {
+const Main = ({ onEditAvatar, onEditProfile, onAddPlace }) => {
   return (
     <main className="content">
       <section className="profile">
-        <button className="profile__avatar" onClick={handleEditAvatarClick}>
+        <button className="profile__avatar" onClick={onEditAvatar}>
           <div className="profile__edit"></div>
         </button>
         <div className="profile__info">
@@ -18,14 +14,14 @@ const Main = ({
             className="profile__edit-button"
             aria-label="Редактировать профиль"
             type="button"
-            onClick={handleEditProfileClick}
+            onClick={onEditProfile}
           ></button>
         </div>
         <button
           className="profile__add-button"
           aria-label="Добавить карточку"
           type="button"
-          onClick={handleAddPlaceClick}
+          onClick={onAddPlace}
         ></button>
       </section>
       <section className="elements"></section>
