@@ -2,12 +2,13 @@ import Header from "../Header/Header";
 import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
 import PopupWithForm from "../PopupWithForm/PopupWithForm";
+import ImagePopup from "../ImagePopup/ImagePopup";
 import react, { useEffect, useState } from "react";
 function App() {
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
-
+  const [selectedCard, setSelectedCard] = useState("");
   const handleEditProfileClick = () => {
     setIsEditProfilePopupOpen(true);
   };
@@ -17,11 +18,16 @@ function App() {
   const handleAddPlaceClick = () => {
     setIsAddPlacePopupOpen(true);
   };
+  const handleCardClick = (cardData) => {
+    setSelectedCard(cardData);
+  }
   const closeAllPopups = () => {
     setIsAddPlacePopupOpen(false);
     setIsEditAvatarPopupOpen(false);
     setIsEditProfilePopupOpen(false);
+    setSelectedCard("");
   };
+
   return (
     <div className="page">
       <Header />
@@ -29,7 +35,7 @@ function App() {
         onEditProfile={handleEditProfileClick}
         onAddPlace={handleAddPlaceClick}
         onEditAvatar={handleEditAvatarClick}
-      // onCardClick={handleCardClick}
+        onCardClick={handleCardClick}
       />
       <Footer />
       <PopupWithForm
@@ -125,6 +131,7 @@ function App() {
           </span>
         </label>
       </PopupWithForm>
+      <ImagePopup card={selectedCard} onClose={closeAllPopups} />
     </div>
   );
 }
