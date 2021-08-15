@@ -1,4 +1,5 @@
 const ImagePopup = ({ card, onClose }) => {
+  console.log(card)
   return (
     <div className={`popup popup_name_image ${card && 'popup_show'}`}>
       <div className="popup__container popup__container_name_preview">
@@ -8,8 +9,8 @@ const ImagePopup = ({ card, onClose }) => {
           aria-label="Закрыть форму"
           type="button"
         ></button>
-        <img src={card.image} alt="Изображение недоступно" className="popup__image" />
-        <p className="popup__image-name">{card.name}</p>
+        <img src={card && card.link} alt="Изображение недоступно" className="popup__image" ></img>
+        <p className="popup__image-name">{card && card.name}</p>
       </div>
     </div>
   );

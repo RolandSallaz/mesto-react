@@ -1,6 +1,6 @@
 import api from '../../utils/Api.js';
 import Card from '../Card/Card.js';
-import react, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 const Main = ({ onEditAvatar, onEditProfile, onAddPlace, onCardClick }) => {
   const [userName, setUserName] = useState("");
   const [userDescription, setUserDescription] = useState("");
@@ -11,12 +11,12 @@ const Main = ({ onEditAvatar, onEditProfile, onAddPlace, onCardClick }) => {
       setUserName(info.name);
       setUserDescription(info.about);
       setUserAvatar(info.avatar);
-    });
+    }).catch(err => console.log(`Ошибка при получении данных пользователя err ${err}`));
   }, []);
   useEffect(() => {
     api.getCards().then(cardList => {
       setCards(cardList);
-    });
+    }).catch(err => console.log(`Ошибка при получении карточек err ${err}`));
   }, []);
   return (
     <main className="content">
@@ -45,7 +45,7 @@ const Main = ({ onEditAvatar, onEditProfile, onAddPlace, onCardClick }) => {
       </section>
       <section className="elements">
         {cards.map(cardItem => {
-          return <Card key={cardItem._id} cardName={cardItem.name} cardImage={cardItem.link} onCardClick={onCardClick} />
+          return <Card key={cardItem._id} cardData={cardItem} onCardClick={onCardClick} />
         })}
       </section>
     </main>
