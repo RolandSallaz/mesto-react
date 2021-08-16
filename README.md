@@ -7,7 +7,11 @@
 проект соединен с бекендом
 
 
-### Запустить проект
+## Запустить проект
 
 npm install
 npm start
+
+## Ссылка на gh-pages
+
+[Ссылка](https://rolandsallaz.github.io/mesto-react/)
