@@ -3,8 +3,10 @@ import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
 import PopupWithForm from "../PopupWithForm/PopupWithForm";
 import ImagePopup from "../ImagePopup/ImagePopup";
-import { useState } from "react";
+import api from "../../utils/Api";
+import { useState, useEffect } from "react";
 function App() {
+  const [currentUser, setCurrentUser] = useState(null);
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
@@ -27,6 +29,11 @@ function App() {
     setIsEditProfilePopupOpen(false);
     setSelectedCard(null);
   };
+  useEffect(() => {
+    api.getUserInfo().then(res => {
+      setCurrentUser(res._id);
+    });
+  }, []);
 
   return (
     <div className="page">

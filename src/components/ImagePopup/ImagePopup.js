@@ -1,5 +1,4 @@
 const ImagePopup = ({ card, onClose }) => {
-  console.log(card)
   return (
     <div className={`popup popup_name_image ${card && 'popup_show'}`}>
       <div className="popup__container popup__container_name_preview">
