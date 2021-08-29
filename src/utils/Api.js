@@ -48,22 +48,15 @@ class Api {
             return this._checkResponse(res);
         });
     }
-    setLike(id) {
+    changeLikeCardStatus(id, prop) {
         return fetch(`${this._url}cards/likes/${id}`, {
-            method: "PUT",
+            method: prop,
             headers: this._headers,
         }).then(res => {
             return this._checkResponse(res);
         });
     }
-    removeLike(id) {
-        return fetch(`${this._url}cards/likes/${id}`, {
-            method: "DELETE",
-            headers: this._headers,
-        }).then(res => {
-            return this._checkResponse(res);
-        });
-    }
+
     changerAvatar(avatar) {
         return fetch(`${this._url}users/me/avatar`, {
             method: "PATCH",
