@@ -3,6 +3,7 @@ import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
 import PopupWithForm from "../PopupWithForm/PopupWithForm";
 import ImagePopup from "../ImagePopup/ImagePopup";
+import EditProfilePopup from "../EditProfilePopup/EditProfilePopup";
 import api from "../../utils/Api";
 import { useState, useEffect } from "react";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
@@ -23,9 +24,10 @@ function App() {
   };
   const handleCardClick = (cardData) => {
     setSelectedCard(cardData);
-
   }
-
+  const handleUpdateUser = ({ name, about }) => {
+    api.setUserInfo(name, about).then(res => { setCurrentUser(res) });
+  }
   const closeAllPopups = () => {
     setIsAddPlacePopupOpen(false);
     setIsEditAvatarPopupOpen(false);
@@ -49,43 +51,7 @@ function App() {
           onCardClick={handleCardClick}
         />}
         <Footer />
-        <PopupWithForm
-          name="edit"
-          title="Редактировать профиль"
-          isOpen={isEditProfilePopupOpen}
-          onClose={closeAllPopups}
-        >
-          <label>
-            <input
-              placeholder="Имя"
-              type="text"
-              name="userName"
-              className="form__input form__input_info_name"
-              id="form__input_info_name"
-              required
-              minLength="2"
-              maxLength="40"
-            />
-            <span className="form__error" id="form__input_info_name-error">
-              Поле с ошибкой
-            </span>
-          </label>
-          <label>
-            <input
-              placeholder="О себе"
-              type="text"
-              name="about"
-              className="form__input form__input_info_about"
-              id="form__input_info_about"
-              required
-              minLength="2"
-              maxLength="200"
-            />
-            <span className="form__error" id="form__input_info_about-error">
-              Поле с ошибкой
-            </span>
-          </label>
-        </PopupWithForm>
+        {currentUser && <EditProfilePopup isOpen={isEditProfilePopupOpen} onUpdateUser={handleUpdateUser} onClose={closeAllPopups} />}
         <PopupWithForm
           name="add"
           title="Новое Место"
