@@ -1,12 +1,17 @@
 import PopupWithForm from "../PopupWithForm/PopupWithForm";
-import { useState } from "react";
-export default function AddPlacePopup({ isOpen, onClose, onSubmit }) {
+import { useEffect, useState } from "react";
+export default function AddPlacePopup({ isOpen, onClose, onSubmit, loading, setLoading }, ...props) {
     const [cardDescription, setCardDescription] = useState(null);
     const [cardLink, setCardLink] = useState(null);
     const handleSubmit = (e) => {
         e.preventDefault();
         onSubmit({ link: cardLink, description: cardDescription });
     }
+    useEffect(() => {
+        return () => {
+            setLoading(false);
+        }
+    }, []);
     return (
         <PopupWithForm
             name="add"
@@ -14,6 +19,7 @@ export default function AddPlacePopup({ isOpen, onClose, onSubmit }) {
             isOpen={isOpen}
             onClose={onClose}
             onSubmit={handleSubmit}
+            loading={loading}
         >
             <label>
                 <input

@@ -1,4 +1,4 @@
-const PopupWithForm = ({ name, title, children, isOpen, onClose, onSubmit }) => {
+const PopupWithForm = ({ name, title, children, isOpen, onClose, onSubmit, loading }) => {
   return (
     <div className={`popup popup_name_${name} ${isOpen && "popup_show"}`}>
       <div className="popup__container">
@@ -14,7 +14,7 @@ const PopupWithForm = ({ name, title, children, isOpen, onClose, onSubmit }) => 
 
             {children}
 
-            <button className="form__save-button" type="submit">
+            <button className={`form__save-button ${loading && "form__save-button_loading"}`} type="submit">
               Сохранить
             </button>
           </div>

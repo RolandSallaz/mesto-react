@@ -71,6 +71,7 @@
 @import url(./blocks/form/__save-button/_disabled/form__save-button_disabled.css);
 @import url(./blocks/form/__error/form__error.css);
 @import url(./blocks/form/__error/_show/form__error_show.css);
+@import url(./blocks/form/__save-button/_loading/form__save-button_loading.css);
 
 /* footer */
 

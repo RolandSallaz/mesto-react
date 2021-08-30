@@ -9,10 +9,12 @@ function EditProfilePopup(props) {
     useEffect(() => {
         setName(currentUser.name);
         setDescription(currentUser.about);
+        return () => {
+            props.setLoading(false);
+        }
     }, [currentUser]);
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(true);
         props.onUpdateUser({
             name,
             about: description,
@@ -24,6 +26,7 @@ function EditProfilePopup(props) {
         isOpen={props.isOpen}
         onClose={props.onClose}
         onSubmit={handleSubmit}
+        loading={props.loading}
     >
         <label>
             <input
