@@ -25,7 +25,7 @@ const Card = (props) => {
                 <h2 className="element__heading">{props.cardData.name}</h2>
                 <div className="element__like-container">
                     <button className={cardLikeButtonClassName} aria-label="Поставить лайк карточке" type="button" onClick={handleCardLike}></button>
-                    <p className="element__like-counter">0</p>
+                    <p className="element__like-counter">{props.cardData.likes.length}</p>
                 </div>
             </div>
         </div>);
