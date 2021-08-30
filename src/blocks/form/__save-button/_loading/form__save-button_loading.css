@@ -5,13 +5,13 @@
 }
 
 @keyframes loading {
-    33% {
+    0% {
         content: ".";
     }
-    66% {
+    33% {
         content: "..";
     }
-    99% {
+    66% {
         content: "...";
     }
 }
