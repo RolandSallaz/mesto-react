@@ -25,7 +25,7 @@ export default function AddPlacePopup({ isOpen, onClose, onSubmit, ...props }) {
                     className="form__input form__input_info_name"
                     id="form__input_info_cardName"
                     required
-                    value=""
+                    value={cardDescription}
                     onChange={e => { setCardDescription(e.target.value) }}
                 />
                 <span className="form__error" id="form__input_info_cardName-error">
@@ -40,7 +40,7 @@ export default function AddPlacePopup({ isOpen, onClose, onSubmit, ...props }) {
                     className="form__input form__input_info_about"
                     id="form__input_info_link"
                     required
-                    value=""
+                    value={cardLink}
                     onChange={e => { setCardLink(e.target.value) }}
                 />
                 <span className="form__error" id="form__input_info_link-error">

@@ -42,7 +42,7 @@ function App() {
     api
       .deleteCard(card._id)
       .then(() => { setCards((state) => state.filter(cardItem => cardItem._id !== card._id)); closeAllPopups(); })
-      .catch(err => console.log(err)).finally(setIsLoading(false));
+      .catch(err => console.log(err)).finally(() => { setIsLoading(false) });
   }
 
   const handleCardClick = (cardData) => {
@@ -55,7 +55,7 @@ function App() {
       .setUserInfo(name, about)
       .then(res => { setCurrentUser(res); closeAllPopups() })
       .catch(err => console.log(err))
-      .finally(setIsLoading(false));
+      .finally(() => { setIsLoading(false) });
   }
   const handleUpdateAvatar = ({ avatar }) => {
     setIsLoading(true);
@@ -63,7 +63,7 @@ function App() {
       .changerAvatar(avatar)
       .then(res => { setCurrentUser(res); closeAllPopups() })
       .catch(err => console.log(err))
-      .finally(setIsLoading(false));
+      .finally(() => { setIsLoading(false) });
   }
 
   const handleCardLike = (card) => {
@@ -83,7 +83,7 @@ function App() {
         closeAllPopups()
       })
       .catch(err => console.log(err))
-      .finally(setIsLoading(false));
+      .finally(() => { setIsLoading(false) });
   }
   const closeAllPopups = () => {
     setIsAddPlacePopupOpen(false);
