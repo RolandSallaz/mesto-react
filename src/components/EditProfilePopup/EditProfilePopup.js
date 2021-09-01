@@ -5,14 +5,6 @@ function EditProfilePopup(props) {
     const [name, setName] = useState("");
     const [description, setDescription] = useState("");
     const currentUser = useContext(CurrentUserContext);
-
-    useEffect(() => {
-        setName(currentUser.name);
-        setDescription(currentUser.about);
-        return () => {
-            props.setLoading(false);
-        }
-    }, [currentUser]);
     const handleSubmit = (e) => {
         e.preventDefault();
         props.onUpdateUser({
@@ -20,6 +12,12 @@ function EditProfilePopup(props) {
             about: description,
         });
     }
+    useEffect(() => {
+        if (currentUser) {
+            setName(currentUser.name);
+            setDescription(currentUser.about);
+        }
+    }, [currentUser, props.isOpen]);
     return (<PopupWithForm
         name="edit"
         title="Редактировать профиль"

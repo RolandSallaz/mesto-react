@@ -20,7 +20,7 @@ const Card = (props) => {
     return (
         <div className="element">
             <button className={cardDeleteButtonClassName} onClick={handleCardDelete}></button>
-            <img src={props.cardData.link} alt="Карточка с местом и подписью" className="element__image" onClick={handleCardClick} />
+            <img src={props.cardData.link} alt={props.cardData.name} className="element__image" onClick={handleCardClick} />
             <div className="element__container">
                 <h2 className="element__heading">{props.cardData.name}</h2>
                 <div className="element__like-container">

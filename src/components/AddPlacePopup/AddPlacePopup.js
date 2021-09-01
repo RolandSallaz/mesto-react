@@ -1,17 +1,13 @@
 import PopupWithForm from "../PopupWithForm/PopupWithForm";
-import { useEffect, useState } from "react";
-export default function AddPlacePopup({ isOpen, onClose, onSubmit, loading, setLoading }, ...props) {
+import { useState } from "react";
+export default function AddPlacePopup({ isOpen, onClose, onSubmit, ...props }) {
     const [cardDescription, setCardDescription] = useState(null);
     const [cardLink, setCardLink] = useState(null);
     const handleSubmit = (e) => {
         e.preventDefault();
         onSubmit({ link: cardLink, description: cardDescription });
     }
-    useEffect(() => {
-        return () => {
-            setLoading(false);
-        }
-    }, []);
+
     return (
         <PopupWithForm
             name="add"
@@ -19,7 +15,7 @@ export default function AddPlacePopup({ isOpen, onClose, onSubmit, loading, setL
             isOpen={isOpen}
             onClose={onClose}
             onSubmit={handleSubmit}
-            loading={loading}
+            loading={props.loading}
         >
             <label>
                 <input
@@ -29,6 +25,7 @@ export default function AddPlacePopup({ isOpen, onClose, onSubmit, loading, setL
                     className="form__input form__input_info_name"
                     id="form__input_info_cardName"
                     required
+                    value=""
                     onChange={e => { setCardDescription(e.target.value) }}
                 />
                 <span className="form__error" id="form__input_info_cardName-error">
@@ -43,6 +40,7 @@ export default function AddPlacePopup({ isOpen, onClose, onSubmit, loading, setL
                     className="form__input form__input_info_about"
                     id="form__input_info_link"
                     required
+                    value=""
                     onChange={e => { setCardLink(e.target.value) }}
                 />
                 <span className="form__error" id="form__input_info_link-error">

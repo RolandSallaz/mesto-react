@@ -8,12 +8,10 @@ const PopupWithForm = ({ name, title, children, isOpen, onClose, onSubmit, loadi
           aria-label="Закрыть форму"
           type="button"
         ></button>
-        <form className="form" id={name} noValidate onSubmit={onSubmit}>
+        <form className="form" id={name} onSubmit={onSubmit}>
           <div className="form__container">
             <h2 className="form__title">{title}</h2>
-
             {children}
-
             <button className={`form__save-button ${loading && "form__save-button_loading"}`} type="submit">
               Сохранить
             </button>
