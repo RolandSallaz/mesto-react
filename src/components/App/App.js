@@ -42,7 +42,8 @@ function App() {
     api
       .deleteCard(card._id)
       .then(() => { setCards((state) => state.filter(cardItem => cardItem._id !== card._id)); closeAllPopups(); })
-      .catch(err => console.log(err)).finally(() => { setIsLoading(false) });
+      .catch(err => console.log(err))
+      .finally(() => { setIsLoading(false) });
   }
 
   const handleCardClick = (cardData) => {
@@ -94,9 +95,7 @@ function App() {
   };
   useEffect(() => {
     api
-      .getUserInfo().then(res => {
-        setCurrentUser(res);
-      })
+      .getUserInfo().then(res => { setCurrentUser(res); })
       .catch(err => console.log(`Ошибка при загрузке пользователя err ${err}`));
   }, []);
   useEffect(() => {
